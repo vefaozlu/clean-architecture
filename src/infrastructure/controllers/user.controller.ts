@@ -9,6 +9,7 @@ class UserController {
 
   constructor() {
     const userRepository = new UserRepository();
+    
     this._getAllUsers = new GetAllUsers(userRepository);
     this._createUser = new CreateUser(userRepository);
   }
@@ -24,10 +25,9 @@ class UserController {
 
   createUser = async (req: Request, res: Response) => {
     try {
-      const user = await this._createUser.execute(req.body);
+      const user = await this._createUser.execute({...req.body});
       return res.status(200).json(user);
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ message: "Failure" });
     }
   };

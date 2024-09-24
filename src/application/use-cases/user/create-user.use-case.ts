@@ -1,4 +1,3 @@
-import User from "../../../core/entities/user.entity";
 import UserRepository from "../../../infrastructure/repositories/user.repository";
 import UserDTO from '../../dtos/user.dto';
 
@@ -10,9 +9,9 @@ class CreateUser {
     }
 
     public async execute(props: UserDTO): Promise<UserDTO> {
-        const user: User = await this.userRepository.create(props);
+        const user: UserDTO = await this.userRepository.create(props);
 
-        return user.getConvertToDTO;
+        return user;
     }
 }
 

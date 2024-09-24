@@ -10,7 +10,7 @@ class GetAllUsers {
     }
 
     public async execute(): Promise<UserDTO[]> {
-        const users: User[] = await this.userRepository.getAll();
+        const users: UserDTO[] = await this.userRepository.getAll();
 
         return users;
     }

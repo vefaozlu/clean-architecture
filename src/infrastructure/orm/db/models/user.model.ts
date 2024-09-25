@@ -1,14 +1,19 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db.config";
+import short from "short-uuid";
 
 const User = sequelize.define(
   "User",
   {
-    id: {
+    ID: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
+    },
+    id: {
+      type: DataTypes.STRING,
+      defaultValue: short.generate(),
     },
     fullName: {
       type: DataTypes.STRING,
@@ -24,6 +29,12 @@ const User = sequelize.define(
     },
   },
   {
+    indexes: [
+      {
+        unique: true,
+        fields: ["ID", "id"],
+      },
+    ],
     timestamps: true,
     paranoid: true,
   }

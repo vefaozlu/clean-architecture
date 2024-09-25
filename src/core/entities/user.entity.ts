@@ -1,7 +1,7 @@
 import UserDTO from "../../application/dtos/user.dto";
 
 class User {
-  public id: number;
+  public id: string;
   public fullName: string;
   public email: string;
   public phone: string | null;
